@@ -26,3 +26,7 @@ poetry.lock
 *.swp
 .DS_Store
 Thumbs.db
+
+# SQLite temp files
+*.sqlite-shm
+*.sqlite-wal
