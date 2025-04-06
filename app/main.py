@@ -1,11 +1,15 @@
 from fastapi import FastAPI
-from app.routes.AuthRoutes import auth_router
-
-app = FastAPI()
-
-app.include_router(router=auth_router, tags=["Authendication routes"])
+from app.routes.auth_routes import auth_router
+from app.config.database import db_init
+from contextlib import asynccontextmanager
 
 
-@app.get("/")
-def welcome():
-    return {"message": "Welcome to Authify for docs go /docs"}
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await db_init()
+    yield
+
+
+app = FastAPI(lifespan=lifespan)
+
+app.include_router(router=auth_router)

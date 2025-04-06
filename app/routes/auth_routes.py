@@ -1,16 +1,24 @@
-from fastapi import APIRouter
-from app.models.AuthModel import RegisterModel, LoginModel
-
-auth_router = APIRouter(prefix="/auth")
-
-
-@auth_router.post("/register")
-def register(user_data: RegisterModel):
-    print(user_data)
-    return {"message": "Registered Successfully!"}
+from fastapi import APIRouter, Body, Response
+from starlette import status
+from app.models.auth_model import RegisterModel, LoginModel
+from app.services.auth_service import create_user
 
 
-@auth_router.post("/login")
-def login(user_data: LoginModel):
-    if user_data:
-        return {"message": "Login Successfully!"}
+auth_router = APIRouter(prefix="/auth", tags=["Authentication routes"])
+
+
+@auth_router.post("/register", status_code=status.HTTP_201_CREATED)
+async def register(
+    user_data: RegisterModel = Body(...), response: Response = Response()
+):
+    user = user_data.model_dump()
+    user_created = await create_user(user)
+    if isinstance(user_created, str):
+        response.status_code = status.HTTP_400_BAD_REQUEST
+
+    return user_created
+
+
+@auth_router.post("/login", status_code=status.HTTP_202_ACCEPTED)
+def login(user_data: LoginModel = Body(...)):
+    return {"message": "Login Successfully!"}

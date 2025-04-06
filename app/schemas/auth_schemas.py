@@ -9,7 +9,7 @@ class User(Model):
         max_length=60, unique=True, null=False, description="email of the user"
     )
     password = fields.CharField(
-        max_length=20, null=False, description="password of the user"
+        max_length=100, min_length=20, null=False, description="password of the user"
     )
     username = fields.CharField(
         max_length=15, unique=True, null=False, description="username of the user"
