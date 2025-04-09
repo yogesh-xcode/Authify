@@ -8,6 +8,6 @@ def hashpw(passwd: str) -> str:
     return hashed.decode()
 
 
-def checkpw(passwd: str, user_passwd: str) -> bool:
+def checkpw(passwd: str, hashed_pw: str) -> bool:
     # Encode both for bcrypt to work
-    return bcrypt.checkpw(passwd.encode(), user_passwd.encode())
+    return bcrypt.checkpw(passwd.encode(), hashed_pw.encode())
