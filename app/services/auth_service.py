@@ -1,14 +1,14 @@
 from typing import Union
 from tortoise.exceptions import IntegrityError
-from app.schemas.auth_schemas import User
+from app.models.auth_model import User
 from app.core.crypto.hashing import hashpw, checkpw
-from app.models.response_model import (
+from app.schemas.response_schema import (
     ErrorResponse,
     Ctx,
     SuccessResponse,
     RegisterData,
 )
-from app.models.type_model import UserData
+from app.schemas.type_schema import UserData
 
 
 # Create a new user if not already registered

@@ -3,7 +3,7 @@ from pydantic import ValidationError
 import pytest
 
 from app.main import app
-from app.models.response_model import SuccessResponse
+from app.schemas.response_schema import SuccessResponse
 from app.tests.models.validate_error_model import ErrorResponse
 
 

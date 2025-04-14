@@ -13,7 +13,9 @@ poetry.lock
 
 # Logs and databases
 *.log
-*.sqlite3
+*.sqlite
+storage/*
+!storage/.gitkeep
 
 # Environment variables
 .env

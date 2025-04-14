@@ -1,5 +1,5 @@
 import bcrypt
-from app.schemas.auth_schemas import User
+from app.models.auth_model import User
 
 
 def hashpw(passwd: str) -> str:

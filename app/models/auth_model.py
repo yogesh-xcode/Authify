@@ -1,28 +1,19 @@
-from pydantic import BaseModel, Field, EmailStr
+from tortoise.models import Model
+from tortoise import fields
+import uuid
 
 
-class BaseAuthModel(BaseModel):
-    email: EmailStr = Field(
-        ..., description="Email of a user", examples=["ayathajm@gmail.com"]
+class User(Model):
+    id = fields.UUIDField(primary_key=True, default=lambda: uuid.uuid4(), unique=True)
+    email = fields.CharField(
+        max_length=60, unique=True, null=False, description="email of the user"
     )
-    password: str = Field(
-        ...,
-        min_length=7,
-        max_length=20,
-        description="Password of a user",
-        examples=["aythu04sL"],
+    password = fields.CharField(
+        max_length=100, min_length=20, null=False, description="password of the user"
+    )
+    username = fields.CharField(
+        max_length=15, unique=True, null=False, description="username of the user"
     )
 
-
-class LoginModel(BaseAuthModel):
-    pass
-
-
-class RegisterModel(BaseAuthModel):
-    username: str = Field(
-        ...,
-        min_length=7,
-        max_length=15,
-        description="username of a user",
-        examples=["ayath.us"],
-    )
+    def __str__(self):
+        return self.name

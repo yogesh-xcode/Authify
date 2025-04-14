@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Literal
 
-from app.models.type_model import UserData
+from app.schemas.type_schema import UserData
 
 
 # Success Response Model

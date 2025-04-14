@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from app.models.response_model import ErrorResponse
+from app.schemas.response_schema import ErrorResponse
 
 
 class ErrorResponse(BaseModel):
