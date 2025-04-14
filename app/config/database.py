@@ -1,7 +1,7 @@
 from tortoise import Tortoise
 import ssl
 
-db_url = "sqlite://app/utils/user.sqlite"
+db_url = "sqlite://app/storage/user.sqlite"
 
 
 async def db_init():
