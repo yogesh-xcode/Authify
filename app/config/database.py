@@ -1,6 +1,5 @@
 from tortoise import Tortoise
-
-db_url = "sqlite://app/storage/user.sqlite"
+from app.config.load_env import db_url
 
 
 async def db_init():
