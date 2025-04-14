@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Body, Response, HTTPException
 from starlette import status
-from app.models.auth_model import RegisterModel, LoginModel
-from app.models.response_model import ErrorResponse, SuccessResponse
+from app.schemas.auth_schema import RegisterModel, LoginModel
+from app.schemas.response_schema import ErrorResponse, SuccessResponse
 from app.services.auth_service import create_user, validate_user
 
 
