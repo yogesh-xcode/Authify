@@ -17,6 +17,17 @@ This changelog follows the [Keep a Changelog](https://keepachangelog.com/en/1.0.
 
 ---
 
+## [0.1.7-dev] - 2025-04-20
+
+### 🛠 JWT Middleware & Token Verification
+
+- 🔐 Implemented JWT encoding/decoding for token verification through cookies
+- 🧩 Added middleware to handle token verification across routes, excluding public ones
+- 🚧 Updated `main.py`, `auth_routes.py`, and dependencies to support JWT implementation
+- 🛠 Enhanced error handling for missing tokens, returning 401 Unauthorized
+
+---
+
 ## [0.1.6-dev] - 2025-04-10
 
 ### ♻️ Lifespan Refactor
