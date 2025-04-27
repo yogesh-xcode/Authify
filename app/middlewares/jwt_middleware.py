@@ -2,9 +2,10 @@ from fastapi import Request, HTTPException
 from jose import jwt, JWTError
 from datetime import datetime
 from fastapi.responses import JSONResponse
+from app.config.load_env import secret_key, algorithm
 
-SECRET_KEY = "zeeboombhaa"
-ALGORITHM = "HS256"
+SECRET_KEY = secret_key
+ALGORITHM = algorithm
 
 
 async def jwt_middleware(request: Request, call_next):
